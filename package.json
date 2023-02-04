@@ -1,0 +1,29 @@
+{
+  "name": "mba-xpe-desm1-desafiodomodulo1",
+  "version": "1.0.0",
+  "description": "1. Instruções para realizar o desafio",
+  "main": "src/server.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon",
+    "dev:debug": "nodemon --inspect"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Komido/MBA-XPe-DESM1-DesafiodoModulo1.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Komido/MBA-XPe-DESM1-DesafiodoModulo1/issues"
+  },
+  "homepage": "https://github.com/Komido/MBA-XPe-DESM1-DesafiodoModulo1#readme",
+  "dependencies": {
+    "express": "^4.18.2"
+  },
+  "devDependencies": {
+    "sucrase": "^3.29.0"
+  }
+}

@@ -1,0 +1,64 @@
+@base_url= http://localhost:3333
+
+#Get Pedidos
+GET {{base_url}}/pedidos HTTP/1.1
+###
+
+#Insert Pedido
+POST {{base_url}}/pedidos HTTP/1.1
+Content-Type: application/json
+
+{
+  "cliente": "Rosaura Azenha",
+  "produto": "Pizza Pepperoni",
+  "valor": 32.50
+}
+###
+
+#Update Pedido
+PUT {{base_url}}/pedidos HTTP/1.1
+Content-Type: application/json
+
+{
+  "id": 503,
+  "entregue": false,
+  "cliente": "Bia Komido",
+  "produto": "Pizza Doce Leite",
+  "valor": 50.5
+}
+###
+
+#Update Status Pedido
+PATCH {{base_url}}/pedidos HTTP/1.1
+Content-Type: application/json
+
+{
+  "id": 501,
+  "entregue": true
+}
+###
+
+#Update Delete Pedido
+DELETE {{base_url}}/pedidos/317 HTTP/1.1
+Content-Type: application/json
+###
+
+#Show Pedido
+GET {{base_url}}/pedidos/216 HTTP/1.1
+Content-Type: application/json
+###
+
+#Show Pedidos entregue para cliente
+GET {{base_url}}/pedidos/cliente/Rosaura%20Azenha HTTP/1.1
+Content-Type: application/json
+###
+
+#Show Pedidos entregue por produto
+GET {{base_url}}/pedidos/produto/Pizza%20Atum HTTP/1.1
+Content-Type: application/json
+###
+
+#Show Produtos Mais Vendidos
+GET {{base_url}}/pedidos/pedido/maisvendido HTTP/1.1
+Content-Type: application/json
+###
