@@ -15,6 +15,7 @@ class App {
   }
 
   routes() {
+    // Este precisa ser sempre o primeiro
     this.server.use((req, res, next) => {
       console.log(
         `Log - ${new Date().toUTCString()} - ${req.method} - ${req.url}`
@@ -25,6 +26,11 @@ class App {
       res.json({ message: "API ON" });
     });
     this.server.use("/pedidos", pedidosRoutes);
+    // Este precisa ser sempre o ultimo
+    this.server.use((err, req, res, next) => {
+      console.log(`ERROR - ${new Date().toUTCString()} - ${err}`);
+      res.status(err.status || 500).json({ error: err.message || err });
+    });
   }
 }
 

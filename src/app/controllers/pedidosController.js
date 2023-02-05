@@ -1,7 +1,7 @@
 import { promises as fs } from "fs";
 
 class PedidosController {
-  async post(req, res) {
+  async post(req, res, next) {
     try {
       const pedido = req.body;
 
@@ -20,11 +20,11 @@ class PedidosController {
 
       return res.json(newPedido);
     } catch (error) {
-      return res.status(400).json({ error: error.message });
+      next(error);
     }
   }
 
-  async put(req, res) {
+  async put(req, res, next) {
     try {
       const pedido = req.body;
 
@@ -46,11 +46,11 @@ class PedidosController {
       await fs.writeFile(global.fileName, JSON.stringify(pedidos, null, 2));
       return res.json(pedidos.pedidos[index]);
     } catch (error) {
-      return res.status(400).json({ error: error.message });
+      next(error);
     }
   }
 
-  async patch(req, res) {
+  async patch(req, res, next) {
     try {
       const pedido = req.body;
 
@@ -67,11 +67,11 @@ class PedidosController {
       await fs.writeFile(global.fileName, JSON.stringify(pedidos, null, 2));
       return res.json(pedidos.pedidos[index]);
     } catch (error) {
-      return res.status(400).json({ error: error.message });
+      next(error);
     }
   }
 
-  async delete(req, res) {
+  async delete(req, res, next) {
     try {
       const { id } = req.params;
 
@@ -85,11 +85,11 @@ class PedidosController {
 
       return res.json(pedidos.pedidos);
     } catch (error) {
-      return res.status(400).json({ error: error.message });
+      next(error);
     }
   }
 
-  async show(req, res) {
+  async show(req, res, next) {
     try {
       const { id } = req.params;
 
@@ -103,11 +103,11 @@ class PedidosController {
 
       return res.json(pedido);
     } catch (error) {
-      return res.status(400).json({ error: error.message });
+      next(error);
     }
   }
 
-  async pedidosCliente(req, res) {
+  async pedidosCliente(req, res, next) {
     try {
       const { name } = req.params;
 
@@ -131,11 +131,11 @@ class PedidosController {
 
       return res.json({ total });
     } catch (error) {
-      return res.status(400).json({ error: error.message });
+      next(error);
     }
   }
 
-  async totalVendidoProduto(req, res) {
+  async totalVendidoProduto(req, res, next) {
     try {
       const { produto } = req.params;
 
@@ -159,11 +159,11 @@ class PedidosController {
 
       return res.json({ total });
     } catch (error) {
-      return res.status(400).json({ error: error.message });
+      next(error);
     }
   }
 
-  async produtosMaisVendidos(req, res) {
+  async produtosMaisVendidos(req, res, next) {
     try {
       const pedidos = JSON.parse(await fs.readFile(global.fileName));
 
@@ -187,7 +187,7 @@ class PedidosController {
       const result = sortedProducts.map((p) => `${p[0]} - ${p[1]}`);
       return res.json(result);
     } catch (error) {
-      return res.status(400).json({ error: error.message });
+      next(error);
     }
   }
 
